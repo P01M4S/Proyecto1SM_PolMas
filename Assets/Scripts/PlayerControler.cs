@@ -19,12 +19,16 @@ public class PlayerControler : MonoBehaviour
 
     public Animator _animator;
 
+    public AudioSource _audio;
+    public AudioClip jumpSXF;
+
     void Awake() 
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
         groundSensor = GetComponentInChildren<GroundSensor>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -93,5 +97,7 @@ public class PlayerControler : MonoBehaviour
         rigidBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
         _animator.SetBool("IsJump", true);
+
+        _audio.PlayOneShot(jumpSXF);
     }
 }
