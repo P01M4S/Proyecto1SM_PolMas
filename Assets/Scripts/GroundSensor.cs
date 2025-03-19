@@ -8,12 +8,23 @@ public class GroundSensor : MonoBehaviour
 
 void OnTriggerEnter2D(Collider2D collider)
 {
-isGrounded = true;
+    isGrounded = true;
+}
+
+void OnTriggerStay2D(Collider2D collider) 
+{
+    if(collider.gameObject.layer == 3)
+    {
+    isGrounded = true;
+    }
 }
 
 void OnTriggerExit2D(Collider2D collider)
 {
+    if(collider.gameObject.layer == 3)
+    {
     isGrounded = false;
+    }
 }
 
 }
