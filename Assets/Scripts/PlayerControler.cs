@@ -21,6 +21,12 @@ public class PlayerControler : MonoBehaviour
 
     public AudioSource _audio;
     public AudioClip jumpSXF;
+    public AudioClip deathSFX;
+
+    public BoxCollider2D _boxCollider;
+    public GameManager _gameManager;
+
+    public SoundManager _soundManager;
 
     void Awake() 
     {
@@ -29,6 +35,9 @@ public class PlayerControler : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _audio = GetComponent<AudioSource>();
+        _boxCollider = GetComponent<BoxCollider2D>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        _soundManager = GameObject.Find("BGM Manager").GetComponent<SoundManager>();
     }
 
     // Start is called before the first frame update
@@ -41,6 +50,10 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!_gameManager.isPlaying)
+        {
+return;
+        }
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         if(Input.GetButtonDown("Jump") && groundSensor.isGrounded == true)
         {
@@ -99,5 +112,23 @@ public class PlayerControler : MonoBehaviour
         _animator.SetBool("IsJump", true);
 
         _audio.PlayOneShot(jumpSXF);
+    }
+
+    public void Death()
+    {
+_animator.SetTrigger("IsDead");
+
+_audio.PlayOneShot(deathSFX);
+_boxCollider.enabled = false;
+Destroy(groundSensor.gameObject);
+
+rigidBody2D.AddForce(Vector2.up * jumpForce / 4, ForceMode2D.Impulse);
+
+inputHorizontal = 0;
+rigidBody2D.velocity = Vector2.zero;
+_soundManager.Invoke("DeathBGM", 4);
+_gameManager.isPlaying = false;
+
+Destroy(gameObject, 5);
     }
 }

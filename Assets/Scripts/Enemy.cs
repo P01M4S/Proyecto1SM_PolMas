@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
 void Start()
     {
-
+speed = 0;
     }
 
     
@@ -34,6 +34,15 @@ void Start()
     void FixedUpdate() 
     {
         _rigidBody.velocity = new Vector2(direction * speed, _rigidBody.velocity.y);
+    }
+void OnBecameVisible()
+    {
+        speed = 2.5f;
+    }
+
+     void OnBecameInvisible()
+    {
+        speed = 0;
     }
 
     public void Death()
@@ -47,10 +56,16 @@ void Start()
 
     void OnCollisionEnter2D(Collision2D collision) 
     {
-        direction *= -1;
+        if(collision.gameObject.CompareTag("Pared") || collision.gameObject.layer == 6)
+        {
+            direction *= -1;
+        }
+
         if(collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            PlayerControler playerScript = collision.gameObject.GetComponent<PlayerControler>();
+            playerScript.Death();
         }
     }
 }

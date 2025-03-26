@@ -24,7 +24,9 @@ public class CamMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 desiredPosition = playerTransform.position + offset;
+        if(playerTransform != null)
+        {
+Vector3 desiredPosition = playerTransform.position + offset;
         //transform.position = playerTransform.position + offset;
 
 float clampX = Mathf.Clamp(desiredPosition.x, minPosition.x, maxPosition.x);
@@ -34,5 +36,7 @@ Vector3 clampedPosition = new Vector3(clampX, clampY, desiredPosition.z);
 Vector3 lerpedPosition = Vector3.Lerp(transform.position, clampedPosition, interpolationRatio);
 
         transform.position = lerpedPosition;
+        }
+        
     }
 }
