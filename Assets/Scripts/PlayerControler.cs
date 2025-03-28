@@ -88,14 +88,12 @@ return;
     {
         if(inputHorizontal > 0)
         {
-        _spriteRenderer.flipX = false;
-
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         _animator.SetBool("IsRun", true);
         }
         else if(inputHorizontal < 0)
         {
-        _spriteRenderer.flipX = true;
-
+        transform.rotation = Quaternion.Euler(0, 180, 0);
         _animator.SetBool("IsRun", true);
         }
 

@@ -6,6 +6,12 @@ public class GroundSensor : MonoBehaviour
 {
     public bool isGrounded;
     public Enemy _enemyScript;
+    public Rigidbody2D _rigidBody;
+
+    void Awake()
+    {
+    _rigidBody = GetComponentInParent<Rigidbody2D>();
+    }
 
 void OnTriggerEnter2D(Collider2D collider)
 {
@@ -18,6 +24,7 @@ void OnTriggerEnter2D(Collider2D collider)
 
     else if (collider.gameObject.layer == 6)
     {
+        _rigidBody.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
         _enemyScript = collider.gameObject.GetComponent<Enemy>();
         _enemyScript.Death();
     }

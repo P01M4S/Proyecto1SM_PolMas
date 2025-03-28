@@ -10,6 +10,10 @@ public class MisteryBox : MonoBehaviour
     public bool _isOpen = false;
     public AudioClip _openSFX;
     private SpriteRenderer _spriteRender;
+    public Transform _vida;
+    public GameObject vidaPrefab;
+    
+
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -24,7 +28,7 @@ public class MisteryBox : MonoBehaviour
             _spriteRender.enabled = true;
             _animator.SetTrigger("Open");
             _audioSource.clip = _misteryBoxSFX;
-
+            Instantiate(vidaPrefab, _vida.position, _vida.rotation);
             _isOpen = true;
         }
         else
