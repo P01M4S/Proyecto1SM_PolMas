@@ -49,7 +49,7 @@ _gameManager = FindAnyObjectByType<GameManager>().GetComponent<GameManager>();
     {
         if(!_gameManager.isPlaying)
         {
-            if(timerEnd)
+            if(!timerEnd)
             {
              DeathBGM();   
             }
@@ -66,14 +66,14 @@ _gameManager = FindAnyObjectByType<GameManager>().GetComponent<GameManager>();
     }
 
     public void DeathBGM()
-    { 
+    {   
+        _audioSource.Stop();
         timer += Time.deltaTime;
         if(timer >= deley)
         {
             timerEnd = true;
             _audioSource.PlayOneShot(gameOver);
         }
-        _audioSource.Stop();
-        _audioSource.PlayOneShot(gameOver);
+      
     }
 }

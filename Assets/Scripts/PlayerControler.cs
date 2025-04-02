@@ -124,7 +124,7 @@ rigidBody2D.AddForce(Vector2.up * jumpForce / 4, ForceMode2D.Impulse);
 
 inputHorizontal = 0;
 rigidBody2D.velocity = Vector2.zero;
-_soundManager.Invoke("DeathBGM", 4);
+//_soundManager.DeathBGM();
 _gameManager.isPlaying = false;
 
 Destroy(gameObject, 5);
