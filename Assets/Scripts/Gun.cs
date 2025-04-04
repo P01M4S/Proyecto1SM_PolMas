@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
     public AudioClip Piw;
     public AudioSource _audioSource;
 
+    public bool canShoot = false;
+
     
     void Awake()
     {
@@ -23,10 +25,20 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*if(Input.GetButtonDown("Fire1") && canShoot)
+        {
+            shoot();
+        }*/
+
         if(Input.GetButtonDown("Fire1"))
         {
             shoot();
         }
+
+        /*if(canShoot)
+        {
+            PowerUp();
+        }*/
     }
 
     void shoot()
@@ -34,4 +46,16 @@ public class Gun : MonoBehaviour
         Instantiate(bulletPrefab, _bullet.position, _bullet.rotation);
         _audioSource.PlayOneShot(Piw);
     }
+
+    /*void PowerUp()
+    {
+    powerUpTimer += Time.deltaTime;
+    powerUpImage.fillAmount = Mathf.InverseLerp(powerUpDuration, 0 , powerUpTimer);
+
+    if(powerUpTimer >= powerUpDuration)
+    {
+        canShoot = false;
+        powerUpTimer = 0;
+    }
+    }*/
 }

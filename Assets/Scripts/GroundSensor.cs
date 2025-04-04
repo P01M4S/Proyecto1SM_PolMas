@@ -7,6 +7,7 @@ public class GroundSensor : MonoBehaviour
     public bool isGrounded;
     public Enemy _enemyScript;
     public Rigidbody2D _rigidBody;
+    public float jumpDamage = 6;
 
     void Awake()
     {
@@ -26,7 +27,7 @@ void OnTriggerEnter2D(Collider2D collider)
     {
         _rigidBody.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
         _enemyScript = collider.gameObject.GetComponent<Enemy>();
-        _enemyScript.Death();
+        _enemyScript.TakeDamage(jumpDamage);
     }
 }
 

@@ -31,6 +31,7 @@ public class VidaExtra : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             Desaparece();
+            
         }
         
     }

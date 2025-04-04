@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody2D _rigidBody;
     public float bulletForce = 10;
+    public float bulletDamage = 2;
 
     void Awake()
     {
@@ -22,7 +23,7 @@ public class Bullet : MonoBehaviour
         if(collider.gameObject.layer == 6)
         {
             Enemy enemyScript = collider.gameObject.GetComponent<Enemy>();
-            enemyScript.Death();
+            enemyScript.TakeDamage(bulletDamage);
             BulletDeath();
         }
         if(collider.gameObject.layer == 3)

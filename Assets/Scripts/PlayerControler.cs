@@ -129,4 +129,7 @@ _gameManager.isPlaying = false;
 
 Destroy(gameObject, 5);
     }
+
+    
+
 }
