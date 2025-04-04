@@ -7,31 +7,29 @@ public class Bandera : MonoBehaviour
     public BoxCollider2D _collider;
     public AudioClip _audioClip;
     public AudioSource _audioSource;
-     public float deley = 2;
-    public float timer = 0;
 
-    public GameManager _gameManager;
+    public SoundManager _soundManager;
 
     public bool timerEnd = false;
 
     void Awake()
     {
         _audioClip = GetComponent<AudioClip>();
+        _collider = GetComponent<BoxCollider2D>();
+        _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
     }
 
     void OnTriggerEnter2D (Collider2D collider) 
-{
-    if(collider.gameObject.CompareTag("Player"))
     {
-        _audioSource.Stop();
-         _audioSource.Stop();
-        timer += Time.deltaTime;
-        if(timer >= deley)
+        if (collider.gameObject.CompareTag("Player"))
         {
-            timerEnd = true;
+            _soundManager._win = true;
+            _soundManager.PauseBGM();
+            _audioSource.PlayOneShot(_audioClip);
         }
-        _audioSource.Play();
-    }
+    
+
+
 }
 
 }

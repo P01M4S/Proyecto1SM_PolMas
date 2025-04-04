@@ -9,11 +9,13 @@ public class Coins : MonoBehaviour
     public AudioClip _audioClip;
     public AudioClip _coinSFX;
     public AudioSource _audioSource;
+    public GameManager _gameManager;
   
    void Awake()
     {
         _audioClip = GetComponent<AudioClip>();
         _boxCollider = GetComponent<BoxCollider2D>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     void OnCollisionEnter2D(Collision2D collision) 
@@ -28,10 +30,12 @@ public class Coins : MonoBehaviour
     }
     public void Desaparece()
     {
+        _gameManager.AddCoins();
 
         _boxCollider.enabled = false;
         Destroy(gameObject, 0.3f);
         
     }
+
 
 }

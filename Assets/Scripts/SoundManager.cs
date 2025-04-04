@@ -12,12 +12,13 @@ public class SoundManager : MonoBehaviour
     public float timer = 0;
 
     public GameManager _gameManager;
+    public bool _win = false;
 
     public bool timerEnd = false;
 
     public void PauseBGM()
     {
-        if(_gameManager._isPaused)
+        if(_gameManager._isPaused || _win)
         {
             _audioSource.Pause();
         }

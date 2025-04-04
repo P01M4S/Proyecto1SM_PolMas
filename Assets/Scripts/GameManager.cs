@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,10 +11,16 @@ public bool isPlaying = true;
 public bool _isPaused = false;
 public SoundManager _soundManager;
 public GameObject pause;
+public int Coins = 0;
+public Text coinsText;
 
 void Awake()
 {
 _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
+}
+void Start()
+{
+    coinsText.text = "Coins: " + Coins.ToString();
 }
 
 void Update()
@@ -42,5 +49,10 @@ public void MainMenu()
     Time.timeScale = 1;
 }
 
+public void AddCoins()
+{
+    Coins++;
+    coinsText.text = "Coins: " + Coins.ToString();
+}
 
 }
