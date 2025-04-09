@@ -12,7 +12,9 @@ public bool _isPaused = false;
 public SoundManager _soundManager;
 public GameObject pause;
 public int Coins = 0;
+public int Goombas = 0;
 public Text coinsText;
+public Text goombasText;
 
 void Awake()
 {
@@ -21,6 +23,7 @@ _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
 void Start()
 {
     coinsText.text = "Coins: " + Coins.ToString();
+    coinsText.text = "Goombas: " + Goombas.ToString();
 }
 
 void Update()
@@ -53,6 +56,12 @@ public void AddCoins()
 {
     Coins++;
     coinsText.text = "Coins: " + Coins.ToString();
+}
+
+public void AddGoombas()
+{
+    Goombas++;
+    goombasText.text = "Goombas: " + Goombas.ToString();
 }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControler : MonoBehaviour
 {
@@ -128,6 +129,8 @@ rigidBody2D.velocity = Vector2.zero;
 _gameManager.isPlaying = false;
 
 Destroy(gameObject, 5);
+
+SceneManager.LoadScene("GameOverMenu",LoadSceneMode.Single);
     }
 
     

@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth = 5;
     public float currentHealth;
     public Slider _helthBar;
+    public GameManager _gameManager;
     
     void Awake()
     {
@@ -23,14 +24,15 @@ public class Enemy : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _helthBar = GetComponentInChildren<Slider>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
 void Start()
     {
-speed = 0;
-currentHealth = maxHealth;
-_helthBar.maxValue = maxHealth;
-_helthBar.value = maxHealth;
+        speed = 0;
+        currentHealth = maxHealth;
+        _helthBar.maxValue = maxHealth;
+        _helthBar.value = maxHealth;
     }
 
     
@@ -69,6 +71,8 @@ void OnBecameVisible()
         if(currentHealth <= 0)
         {
             Death();
+
+            _gameManager.AddGoombas();
         }
     }
 

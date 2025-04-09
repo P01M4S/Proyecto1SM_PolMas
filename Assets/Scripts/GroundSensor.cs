@@ -8,6 +8,7 @@ public class GroundSensor : MonoBehaviour
     public Enemy _enemyScript;
     public Rigidbody2D _rigidBody;
     public float jumpDamage = 6;
+    public PlayerControler playerControler;
 
     void Awake()
     {
@@ -29,6 +30,13 @@ void OnTriggerEnter2D(Collider2D collider)
         _enemyScript = collider.gameObject.GetComponent<Enemy>();
         _enemyScript.TakeDamage(jumpDamage);
     }
+
+    if(collider.gameObject.layer == 10)
+    {
+        playerControler = GetComponentInParent<PlayerControler>();
+        playerControler.Death();
+    }
+
 }
 
 void OnTriggerStay2D(Collider2D collider) 

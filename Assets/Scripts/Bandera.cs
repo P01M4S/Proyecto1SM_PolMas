@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bandera : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Bandera : MonoBehaviour
             _soundManager._win = true;
             _soundManager.PauseBGM();
             _audioSource.PlayOneShot(_audioClip);
+            SceneManager.LoadScene("MenuPrincipal",LoadSceneMode.Single);
         }
     
 
