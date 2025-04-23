@@ -16,6 +16,8 @@ public int Goombas = 0;
 public Text coinsText;
 public Text goombasText;
 
+public List<GameObject> enemisOnScrean;
+
 void Awake()
 {
 _soundManager = FindObjectOfType<SoundManager>().GetComponent<SoundManager>();
@@ -43,6 +45,14 @@ void Update()
         _isPaused = true;
         _soundManager.PauseBGM();
         pause.SetActive(true);
+        }
+    }
+    if(Input.GetKeyDown(KeyCode.N))
+    {
+        foreach(GameObject enemy in enemisOnScrean)
+        {
+            Enemy enemyScript = enemy.GetComponent<Enemy>();
+            enemyScript.Death();
         }
     }
 }

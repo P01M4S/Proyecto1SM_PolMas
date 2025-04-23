@@ -47,11 +47,13 @@ void Start()
 void OnBecameVisible()
     {
         direction = 1;
+        _gameManager.enemisOnScrean.Add(gameObject);
     }
 
      void OnBecameInvisible()
     {
         direction = 0;
+        _gameManager.enemisOnScrean.Remove(gameObject);
     }
 
     public void Death()

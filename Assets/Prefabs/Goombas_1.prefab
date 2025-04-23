@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  speed: 1.5
+  speed: 2
   _animator: {fileID: 0}
   _audioSource: {fileID: 1974879748248400470}
   _rigidBody: {fileID: 0}
@@ -280,6 +280,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   _helthBar: {fileID: 0}
+  _gameManager: {fileID: 0}
 --- !u!95 &6693339726033959692
 Animator:
   serializedVersion: 5

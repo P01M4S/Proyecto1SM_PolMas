@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  speed: 2.5
+  speed: 5
   _animator: {fileID: 0}
   _audioSource: {fileID: 6851031123983042196}
   _rigidBody: {fileID: 0}
